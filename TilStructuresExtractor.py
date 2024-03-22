@@ -84,14 +84,15 @@ def save_structures_to_file():
 
     # 假如没有structures.json文件就创建一个
     # 创建structures.json
-    if not os.path.exists("structures.json"):
-        with open("structures.json", "w") as f:
+    structure_json_path = r"D:\ris\projects\Graduation Project\experiment\edk2_build_debug_files\structures.json"
+    if not os.path.exists(structure_json_path):
+        with open(structure_json_path, "w") as f:
             json.dump(structures_dict, f, indent=4)
     else:
-        with open("structures.json", "r") as f:
+        with open(structure_json_path, "r") as f:
             data = json.load(f)
             data.update(structures_dict)  # 对字典进行合并
-        with open("structures.json", "w") as f:
+        with open(structure_json_path, "w") as f:
             json.dump(data, f, indent=4)
 
 

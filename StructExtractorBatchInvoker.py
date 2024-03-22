@@ -26,12 +26,13 @@ def run_cmd_for_all_efi_files_in_dir(debug_dir):
                 run_cmd_in_ida_dir(cmd + " " + "\"" + os.path.join(root, file) + "\"")
 
 
-# if __name__ == '__main__':
-#     # 读取配置文件中保存的debug文件路径
-#     with open("StructExtractorBatchInvokerConfig.txt", "r") as f:
-#         now_debug_dir = f.read()
-#     run_cmd_for_all_efi_files_in_dir(now_debug_dir)
-import json
-with open(r"D:\ris\projects\Graduation Project\experiment\edk2_build_debug_files\structures.json", "r") as f:
-    d = json.load(f)
-    print(len(d))
+if __name__ == '__main__':
+    # 读取配置文件中保存的debug文件路径
+    with open("StructExtractorBatchInvokerConfig.txt", "r") as f:
+        now_debug_dir = f.read()
+    run_cmd_for_all_efi_files_in_dir(now_debug_dir)
+
+# import json
+# with open(r"D:\ris\projects\Graduation Project\experiment\edk2_build_debug_files\structures.json", "r") as f:
+#     data = json.load(f)
+#     print(len(data))

@@ -2,6 +2,7 @@ import ida_struct
 import idautils
 import idaapi
 import json
+import os
 
 
 # 获取结构体中成员的数据类型
@@ -73,8 +74,17 @@ def save_structures_to_file():
             "members": members_dict
         }
 
-    with open("structures.json", "w") as f:
-        json.dump(structures_dict, f, indent=4)
+    structure_json_path = "structures.json"
+    if not os.path.exists(structure_json_path):
+        with open(structure_json_path, "w") as f:
+            json.dump(structures_dict, f, indent=4)
+    else:
+        with open(structure_json_path, "r") as f:
+            data = json.load(f)
+            data.update(structures_dict)  # 对字典进行合并
+        with open(structure_json_path, "w") as f:
+            json.dump(data, f, indent=4)
+    print("finish saving structures to file")
 
 
 # 运行脚本时调用

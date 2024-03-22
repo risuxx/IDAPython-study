@@ -55,7 +55,7 @@ def collect_structures():
 
 
 # 打印所有结构体信息
-def print_structures():
+def print_structures(structures):
     structures = collect_structures()
     for struc_name, struc_size, members in structures:
         print(f"Structure: {struc_name}, Size: {struc_size}")
@@ -65,8 +65,7 @@ def print_structures():
 
 
 # 将结构体信息修改为json格式并保存在文件中
-def save_structures_to_file():
-    structures = collect_structures()
+def save_structures_to_file(structures):
     structures_dict = {}
     for struc_name, struc_size, members in structures:
         members_dict = {}
@@ -96,8 +95,9 @@ def save_structures_to_file():
 
 def main():
     ida_auto.auto_wait()
-    print_structures()
-    save_structures_to_file()
+    structures = collect_structures()
+    print_structures(structures)
+    save_structures_to_file(structures)
     ida_pro.qexit(0)
 
 
